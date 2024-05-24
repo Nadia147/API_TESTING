@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "61d2dafa-13a1-491a-bc37-64128da79878",
+		"name": "Dynamic_API_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34646440",
+		"_collection_link": "https://test00-7636.postman.co/workspace/test-Workspace~5f2465e3-9db3-4863-b203-c375ddceba2e/collection/34646440-61d2dafa-13a1-491a-bc37-64128da79878?action=share&source=collection_link&creator=34646440"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"var id = jsonData.data[0].id;\r",
+							"\r",
+							"pm.collectionVariables.set(\"id\",id);\r",
+							"console.log(id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/v1/employees",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"var name = jsonData.data.employee_name;\r",
+							"pm.collectionVariables.set(\"name\",name);\r",
+							"console.log(name);\r",
+							"\r",
+							"var salary = jsonData.data.employee_salary;\r",
+							"pm.collectionVariables.set(\"salary\",salary);\r",
+							"console.log(salary);\r",
+							"\r",
+							"var age = jsonData.data.employee_age;\r",
+							"pm.collectionVariables.set(\"age\",age);\r",
+							"console.log(age);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/v1/employee/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employee",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": {{name}},\r\n    \"salary\": {{salary}},\r\n    \"age\": {{age}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/create",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": {{name}},\r\n    \"salary\": {{salary}},\r\n    \"age\": {{age}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/update/21",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"update",
+						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/v1/delete/2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"delete",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": ""
+		},
+		{
+			"key": "name",
+			"value": ""
+		},
+		{
+			"key": "salary",
+			"value": ""
+		},
+		{
+			"key": "age",
+			"value": ""
+		}
+	]
+}
